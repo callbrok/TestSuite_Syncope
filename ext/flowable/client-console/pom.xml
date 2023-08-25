@@ -112,7 +112,7 @@ under the License.
                 <copy file="${basedir}/src/main/resources/toolbar.js" todir="${flowable-modeler.directory}/editor-app/configuration" overwrite="true"/>
                 <copy file="${basedir}/src/main/resources/save-model.html" todir="${flowable-modeler.directory}/editor-app/popups" overwrite="true"/>
 
-                <patch patchfile="${basedir}/src/main/resources/dropdown.diff" dir="${flowable-modeler.directory}" strip="1"/>
+               <!-- <patch patchfile="${basedir}/src/main/resources/dropdown.diff" dir="${flowable-modeler.directory}" strip="1"/> -->
               </target>
             </configuration>
             <goals>
