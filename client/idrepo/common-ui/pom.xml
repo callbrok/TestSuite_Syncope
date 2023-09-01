@@ -41,7 +41,8 @@ under the License.
       <artifactId>spring-boot-actuator</artifactId>
     </dependency>
 
-    <dependency>
+
+    <!-- <dependency>
       <groupId>org.apache.wicket</groupId>
       <artifactId>wicket</artifactId>
       <type>pom</type>
@@ -93,7 +94,7 @@ under the License.
     <dependency>
       <groupId>de.agilecoders.wicket</groupId>
       <artifactId>wicket-bootstrap-extensions</artifactId>
-    </dependency>
+    </dependency> -->
 
     <dependency>
       <groupId>net.bytebuddy</groupId>

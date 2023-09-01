@@ -61,10 +61,10 @@ under the License.
       <artifactId>spring-boot-starter-security</artifactId>
     </dependency>
 
-    <dependency>
+    <!-- <dependency>
       <groupId>org.apache.wicket</groupId>
       <artifactId>wicket-auth-roles</artifactId>
-    </dependency>
+    </dependency> -->
 
     <dependency>
       <groupId>org.apache.syncope.client.idrepo</groupId>

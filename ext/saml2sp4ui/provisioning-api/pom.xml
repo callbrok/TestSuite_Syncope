@@ -59,10 +59,10 @@ under the License.
       <groupId>org.pac4j</groupId>
       <artifactId>pac4j-saml</artifactId>
     </dependency>
-    <dependency>
+    <!-- <dependency>
       <groupId>org.apache.velocity</groupId>
       <artifactId>velocity-engine-core</artifactId>
-    </dependency>
+    </dependency>-->
   </dependencies>
 
   <build>
