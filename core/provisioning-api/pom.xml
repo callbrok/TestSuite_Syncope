@@ -190,6 +190,44 @@ under the License.
       </build>
     </profile>
 
-
+    <!-- Pitest Profile -->
+    <profile>
+      <id>pit</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <pitest.version>1.14.1</pitest.version>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.pitest</groupId>
+            <artifactId>pitest-maven</artifactId>
+            <version>${pitest.version}</version>
+            <configuration>
+              <targetClasses>
+                <param>org.apache.syncope.core.provisioning.api.utils.RealmUtils</param>
+              </targetClasses>
+              <targetTests>
+                <param>org.apache.syncope.core.provisioning.api.utils.RealmUtilsGetGroupOwnerTest</param>
+                <param>org.apache.syncope.core.provisioning.api.utils.RealmUtilsNormalizeTest</param>
+                <param>org.apache.syncope.core.provisioning.api.utils.RealmUtilsNormalizingAddToTest</param>
+                <param>org.apache.syncope.core.provisioning.api.utils.RealmUtilsParseGroupOwnerTest</param>
+              </targetTests>
+            </configuration>
+            <executions>
+              <execution>
+                <id>Generate PIT report</id>
+                <phase>test-compile</phase>
+                <goals>
+                  <goal>mutationCoverage</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
   </profiles>
 </project>
