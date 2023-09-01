@@ -1,0 +1,38 @@
+name: badua_coverage
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+      - name: Clone and build ba-dua  # to get the CLI
+        run: |
+          git clone https://www.github.com/saeg/ba-dua.git
+          cd ba-dua
+          git checkout tags/ba-dua-0.6.0 -b ba-dua-0.6.0
+          mvn clean install
+      - name: Build
+        run: mvn clean verify -P badua
+      - name: Upload report DefaultPassword
+        uses: actions/upload-artifact@v3
+        with:
+          name: badua-report
+          path: core/spring/target/badua.xml
+          if-no-files-found: error
+      - name: Upload report RealmUtils
+        uses: actions/upload-artifact@v3
+        with:
+          name: badua-report
+          path: core/provisioning-api/target/badua.xml
+          if-no-files-found: error

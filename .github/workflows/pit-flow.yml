@@ -1,0 +1,32 @@
+name: pit_coverage
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+      - name: Build
+        run: mvn clean test -P pit
+      - name: Upload report DefaultPassword
+        uses: actions/upload-artifact@v3
+        with:
+          name: pit-report
+          path: core/spring/target/pit-reports
+          if-no-files-found: error
+      - name: Upload report RealmUtils
+        uses: actions/upload-artifact@v3
+        with:
+          name: pit-report
+          path: core/provisioning-api/target/pit-reports
+          if-no-files-found: error
