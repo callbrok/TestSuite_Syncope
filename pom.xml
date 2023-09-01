@@ -979,7 +979,7 @@ under the License.
       </dependency>
       <!-- /CAS -->
 
-      <!-- Wicket
+      <!-- Wicket -->
       <dependency>
         <groupId>org.apache.wicket</groupId>
         <artifactId>wicket</artifactId>
@@ -1060,7 +1060,7 @@ under the License.
           </exclusion>
         </exclusions>
       </dependency>
-      /Wicket -->
+     <!-- /Wicket -->
 
       <dependency>
         <groupId>com.lmax</groupId>
