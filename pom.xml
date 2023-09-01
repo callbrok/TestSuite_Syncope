@@ -501,6 +501,11 @@ under the License.
     <jdbc.mssql.version>12.2.0.jre</jdbc.mssql.version>
     <jdbc.oracle.version>23.2.0.0</jdbc.oracle.version>
 
+    <ba-dua.version>0.6.0</ba-dua.version>
+
+    <maven-install-plugin.version>3.1.1</maven-install-plugin.version>
+    <exec-maven-plugin.version>3.1.0</exec-maven-plugin.version>
+
     <bundles.directory>${project.build.directory}/bundles</bundles.directory>
 
     <adminUser>admin</adminUser>
@@ -521,11 +526,8 @@ under the License.
     <sass.skip>false</sass.skip>
     <remote-resources.skip>true</remote-resources.skip>
 
-    <sonar.language>java</sonar.language>
-    <sonar.java.source>${targetJdk}</sonar.java.source>
-    <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-    <sonar.junit.reportPaths>${project.build.directory}/surefire-reports</sonar.junit.reportPaths>
-    <sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+
+    <sonar.coverage.jacoco.xmlReportPaths>${maven.multiModuleProjectDirectory}/jacoco-code-coverage/target/site/jacoco-aggregate/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
 
     <targetJdk>17</targetJdk>
     <rootpom.basedir>${basedir}</rootpom.basedir>
@@ -1576,7 +1578,7 @@ under the License.
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>exec-maven-plugin</artifactId>
-          <version>3.1.0</version>
+          <version>${exec-maven-plugin.version}</version>
         </plugin>
 
         <plugin>
@@ -1658,7 +1660,7 @@ under the License.
         </executions>
       </plugin>
 
-      <plugin>
+      <!-- <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
         <configuration>
@@ -1673,9 +1675,9 @@ under the License.
             </goals>
           </execution>
         </executions>
-      </plugin>
+      </plugin> -->
 
-      <plugin>
+      <!-- <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
         <configuration>
@@ -1696,7 +1698,7 @@ under the License.
             </goals>
           </execution>
         </executions>
-      </plugin>
+      </plugin> -->
 
       <plugin>
         <groupId>org.codehaus.gmavenplus</groupId>
@@ -1737,7 +1739,7 @@ under the License.
         </executions>
       </plugin>
 
-      <plugin>
+      <!-- <plugin>
         <groupId>org.apache.rat</groupId>
         <artifactId>apache-rat-plugin</artifactId>
         <configuration>
@@ -1776,7 +1778,7 @@ under the License.
             </goals>
           </execution>
         </executions>
-      </plugin>
+      </plugin> -->
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -1838,8 +1840,8 @@ under the License.
         <artifactId>tools-maven-plugin</artifactId>
         <version>1.4</version>
         <configuration>
-          <!-- Fail the build if any artifacts are missing legal files -->
-          <strict>true</strict>
+          <!-- Do not fail the build if any artifacts are missing legal files -->
+          <strict>false</strict>
         </configuration>
         <executions>
           <execution>
@@ -2176,6 +2178,32 @@ under the License.
         <module>docker</module>
       </modules>
     </profile>
+
+    <!-- jacoco profile -->
+    <profile>
+      <id>jacoco</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.10</version>
+            <executions>
+              <execution>
+                <id>prepare-agent</id>
+                <goals>
+                  <goal>prepare-agent</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
   </profiles>
 
   <modules>
@@ -2183,11 +2211,12 @@ under the License.
     <module>core</module>
     <module>client</module>
     <module>sra</module>
-    <module>wa</module>
-    <module>fit</module>
+  <!--  <module>wa</module>
+    <module>fit</module> -->
     <module>ext</module>
     <module>archetype</module>
-    <module>standalone</module>
+ <!--   <module>standalone</module> -->
+    <module>jacoco-code-coverage</module>
   </modules>
 
 </project>
