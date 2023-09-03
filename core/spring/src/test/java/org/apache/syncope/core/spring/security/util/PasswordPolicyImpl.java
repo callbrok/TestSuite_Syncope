@@ -31,7 +31,9 @@ public class PasswordPolicyImpl implements PasswordPolicy {
 
     private final List<Implementation> rules = new ArrayList<>();
 
-    public PasswordPolicyImpl(final Implementation rule) {rules.add(rule);}
+    public PasswordPolicyImpl(final Implementation rule) {add(rule);}
+
+    public PasswordPolicyImpl() {}
 
     @Override
     public String getKey() {return "";}

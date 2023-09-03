@@ -23,7 +23,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: pit-report
-          path: core/spring/target/pit-reports
+          path: core\|/spring/target/pit-reports
           if-no-files-found: error
       - name: Upload report RealmUtils
         uses: actions/upload-artifact@v3
