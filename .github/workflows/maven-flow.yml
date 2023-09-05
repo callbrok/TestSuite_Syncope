@@ -39,9 +39,9 @@ jobs:
           name: surefire-reports
           path: core/provisioning-api/target/surefire-reports
           if-no-files-found: error
-      - name: Upload Filesafe reports Integration AuthDataAccessor
+      - name: Upload Failsafe reports Integration AuthDataAccessor
         uses: actions/upload-artifact@v3
         with:
-          name: filesafe-reports
-          path: core/spring/target/filesafe-reports
+          name: failsafe-reports
+          path: core/spring/target/failsafe-reports
           if-no-files-found: error
