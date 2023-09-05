@@ -56,8 +56,7 @@ public class RealmUtilsNormalizeTest {
 
 
     @Test
-    public void test() {
-
+    public void normalizeTest() {
 
         Pair<Set<String>, Set<String>> outputNormalize = RealmUtils.normalize(realms);
         System.out.println("USCITO: " + outputNormalize);

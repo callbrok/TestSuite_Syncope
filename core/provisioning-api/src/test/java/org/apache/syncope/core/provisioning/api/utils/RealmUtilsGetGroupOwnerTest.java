@@ -38,7 +38,7 @@ public class RealmUtilsGetGroupOwnerTest {
 
 
     @Test
-    public void test() {
+    public void getGroupOwnerRealmTest() {
         String expectedResult = String.format("%s@%s",this.realmPath,this.groupKey);
         String actualValue = RealmUtils.getGroupOwnerRealm(this.realmPath, this.groupKey);
         System.out.println("RISULTATO: " + actualValue);

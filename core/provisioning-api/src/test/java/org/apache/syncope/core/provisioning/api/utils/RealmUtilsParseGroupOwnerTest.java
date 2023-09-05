@@ -41,7 +41,7 @@ public class RealmUtilsParseGroupOwnerTest {
 
 
     @Test
-    public void test() {
+    public void parseGroupOwnerRealmTest() {
         Optional<Pair<String,String>> expectedValidValue = Optional.of(Pair.of("path","key"));
         Optional<Pair<String, String>> actualValue;
 

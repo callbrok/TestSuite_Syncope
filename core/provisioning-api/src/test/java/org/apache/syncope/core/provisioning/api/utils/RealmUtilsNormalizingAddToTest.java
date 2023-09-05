@@ -61,7 +61,7 @@ public class RealmUtilsNormalizingAddToTest {
 
 
     @Test
-    public void test() {
+    public void normalizingAddToTest() {
         System.out.println("REALMS: " + realms + "  -- NEW REALM: " + newRealm);
         boolean actualValue = false;
 

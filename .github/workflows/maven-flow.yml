@@ -27,7 +27,7 @@ jobs:
           distribution: 'zulu'
       - name: Build with Maven
         run: mvn clean verify
-      - name: Upload Surefire reports DefaultPassword
+      - name: Upload Surefire reports DefaultPassword and AuthDataAccessor
         uses: actions/upload-artifact@v3
         with:
           name: surefire-reports
@@ -38,4 +38,10 @@ jobs:
         with:
           name: surefire-reports
           path: core/provisioning-api/target/surefire-reports
+          if-no-files-found: error
+      - name: Upload Filesafe reports Integration AuthDataAccessor
+        uses: actions/upload-artifact@v3
+        with:
+          name: filesafe-reports
+          path: core/spring/target/filesafe-reports
           if-no-files-found: error

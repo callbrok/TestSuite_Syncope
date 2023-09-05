@@ -51,7 +51,7 @@ public class RealmUtilsGetEffectiveTest {
 
 
     @Test
-    public void test() {
+    public void getEffectiveTest() {
         Set<String> outputNormalize;
 
         try {
