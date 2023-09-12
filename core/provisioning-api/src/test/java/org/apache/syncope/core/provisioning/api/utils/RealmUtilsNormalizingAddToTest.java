@@ -62,7 +62,6 @@ public class RealmUtilsNormalizingAddToTest {
 
     @Test
     public void normalizingAddToTest() {
-        System.out.println("REALMS: " + realms + "  -- NEW REALM: " + newRealm);
         boolean actualValue = false;
 
         try{
@@ -85,7 +84,7 @@ public class RealmUtilsNormalizingAddToTest {
 
         }catch (NullPointerException e){
             if(testType == ConstantChecker.INVALID_NULL_ADD){
-                System.out.println("ECCEZZIONE: " + e.getClass().getName());
+
                 assertTrue(true);}
         }
 

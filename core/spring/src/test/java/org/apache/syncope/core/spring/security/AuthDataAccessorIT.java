@@ -41,7 +41,7 @@ public class AuthDataAccessorIT {
         validEntForRealms.put("DOMAIN_READ", Set.of("/a/b/c","/e/f/g"));
 
         Map<String, Set<String>> invalid1EntForRealms = new HashMap<>();
-        invalid1EntForRealms.put("777_fake_ENT_ACCESS", Set.of("/a/b/c"));
+        invalid1EntForRealms.put("fake_ENT_ACCESS", Set.of("/a/b/c"));
 
         Map<String, Set<String>> invalid2EntForRealms = new HashMap<>();
         invalid2EntForRealms.put("DOMAIN_READ", Set.of("fake-path-realm"));
@@ -114,8 +114,6 @@ public class AuthDataAccessorIT {
             Set<SyncopeGrantedAuthority> syncopeGrantedAuthorities = authDataAccessor.buildAuthorities(entForRealms);
 
             for (SyncopeGrantedAuthority auth: syncopeGrantedAuthorities) {
-                System.out.println("AUTH_ENTITLEMENT: " + auth.getAuthority() + " | AUTH_REALMS: " + auth.getRealms());
-
                 checkOutput = normalizedRealms.equals(auth.getRealms());
             }
 

@@ -257,7 +257,6 @@ public class DefaultPasswordGeneratorTest {
             assertTrue(checkPass);
 
         } catch (NullPointerException | BufferOverflowException | IllegalArgumentException e) {
-            System.out.println("ENTRATO");
             if(testType == ConstantChecker.INVALID_GENERATE){assertTrue(true);}
         }
 

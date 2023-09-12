@@ -33,11 +33,13 @@ public class RealmUtilsGetEffectiveTest {
     public static Collection<Object[]> getParameters() {
 
         return Arrays.asList(new Object[][]{
-                {new HashSet<>(Arrays.asList("a/b/c@key1")), "e/f/g@key2", new HashSet<>(Arrays.asList("a/b/c@key1")), ConstantChecker.VALID_EFFECTIVE},
-                {null, "e/f/g@key2", new HashSet<>(Arrays.asList()), ConstantChecker.VALID_EFFECTIVE},
-                {new HashSet<>(Arrays.asList("a/b/c@key1")), null, null, ConstantChecker.NULL_EFFECTIVE},
-                {new HashSet<>(Arrays.asList()), "a/b/c@key1", new HashSet<>(Arrays.asList()), ConstantChecker.VALID_EFFECTIVE},
-                {new HashSet<>(Arrays.asList("a/b/c@key1")), "", new HashSet<>(Arrays.asList("a/b/c@key1")), ConstantChecker.VALID_EFFECTIVE}
+                {new HashSet<>(Arrays.asList("/a/b/c@key1")), "/e/f/g@key2", new HashSet<>(Arrays.asList("/a/b/c@key1")), ConstantChecker.VALID_EFFECTIVE},
+                {null, "/e/f/g@key2", new HashSet<>(Arrays.asList()), ConstantChecker.VALID_EFFECTIVE},
+                {new HashSet<>(Arrays.asList("/a/b/c@key1")), null, null, ConstantChecker.NULL_EFFECTIVE},
+                {new HashSet<>(Arrays.asList()), "/a/b/c@key1", new HashSet<>(Arrays.asList()), ConstantChecker.VALID_EFFECTIVE},
+                {new HashSet<>(Arrays.asList("/a/b/c@key1")), "", new HashSet<>(Arrays.asList("/a/b/c@key1")), ConstantChecker.VALID_EFFECTIVE},
+                {new HashSet<>(Arrays.asList("a-b-c@key1")), "/e/f/g@key2", new HashSet<>(Arrays.asList("a-b-c@key1")), ConstantChecker.VALID_EFFECTIVE},
+                {new HashSet<>(Arrays.asList("/a/b/c@key1")), "e-f-g@key2", new HashSet<>(Arrays.asList("/a/b/c@key1")), ConstantChecker.VALID_EFFECTIVE},
         });
     }
 
@@ -56,6 +58,8 @@ public class RealmUtilsGetEffectiveTest {
 
         try {
             outputNormalize = RealmUtils.getEffective(allowedRealms, requestedRealm);
+            System.out.println(outputNormalize);
+
             assertEquals(expectedRealms, outputNormalize);
         }catch(NullPointerException e){
             if(testType == ConstantChecker.NULL_EFFECTIVE){assertTrue(true);}

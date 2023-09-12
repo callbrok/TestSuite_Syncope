@@ -36,7 +36,7 @@ public class AuthDataAccessorBuildAuthoritiesTest {
         validEntForRealms.put("DOMAIN_READ", Set.of("/a/b/c","/e/f/g"));
 
         Map<String, Set<String>> invalid1EntForRealms = new HashMap<>();
-        invalid1EntForRealms.put("777_fake_ENT_ACCESS", Set.of("/a/b/c"));
+        invalid1EntForRealms.put("fake_ENT_ACCESS", Set.of("/a/b/c"));
 
         Map<String, Set<String>> invalid2EntForRealms = new HashMap<>();
         invalid2EntForRealms.put("DOMAIN_READ", Set.of("fake-path-realm"));
@@ -77,9 +77,6 @@ public class AuthDataAccessorBuildAuthoritiesTest {
 
             // Controlla se per una determinata chiave entitlement restitutisce il medesimo gruppo di realms
             for (SyncopeGrantedAuthority auth: syncopeGrantedAuthorities) {
-                System.out.println("AUTH_ENTITLEMENT: " + auth.getAuthority() + " | AUTH_REALMS: " + auth.getRealms());
-                System.out.println("LA MAPPA PASSATA: " + entForRealms.get(auth.getAuthority()));
-
                 checkOutput = entForRealms.get(auth.getAuthority()).equals(auth.getRealms());
             }
 
