@@ -1,35 +1,49 @@
-<!--
-Licensed to the Apache Software Foundation (ASF) under one
-or more contributor license agreements.  See the NOTICE file
-distributed with this work for additional information
-regarding copyright ownership.  The ASF licenses this file
-to you under the Apache License, Version 2.0 (the
-"License"); you may not use this file except in compliance
-with the License.  You may obtain a copy of the License at
+# Test Suite for Apache Syncope
 
-  http://www.apache.org/licenses/LICENSE-2.0
+Test suite (unit test and integration test) for the Apache Syncope project, and analysis of their adequacy through coverage tools such as [Ba-Dua](https://github.com/saeg/ba-dua) for data coverage,  [JaCoCo](https://github.com/jacoco/jacoco) for statement coverage and branch coverage. Further quality controls of the developed tests were carried out through [Pitest](https://github.com/hcoles/pitest) (aka PIT) tool, to verify their robustness to SUT mutations.
 
-Unless required by applicable law or agreed to in writing,
-software distributed under the License is distributed on an
-"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, either express or implied.  See the License for the
-specific language governing permissions and limitations
-under the License.
--->
-**Apache Syncope** is an Open Source system for managing digital identities in enterprise environments, 
+[Mockito](https://github.com/mockito/mockito) was used to simulate the execution environment and [GitHub Actions](https://github.com/features/actions) was used as a continuous integration tool.
+
+
+
+The following classes have been tested:
+```
+org.apache.syncope.core.spring.security.AuthDataAccessor
+
+org.apache.syncope.core.spring.security.DefaultPasswordGenerator
+
+org.apache.syncope.core.provisioning.api.utils.RealmUtils
+```
+
+Each tool is associated with a dedicated Maven profile, can be executed through the commands:
+
+```
+mvn clean verify -P jacoco
+```
+```
+mvn clean verify -P badua
+```
+```
+mvn clean test -P pit
+```
+
+
+## Apache Syncope Overview
+
+Apache Syncope is an Open Source system for managing digital identities in enterprise environments, 
 implemented in Java EE technology and released under Apache 2.0 license.
 
-More information at https://syncope.apache.org
+## Some results of adequacy
 
-<a href="https://bestpractices.coreinfrastructure.org/projects/154">
-  <img src="https://bestpractices.coreinfrastructure.org/projects/154/badge"/>
-</a>
-<a href="#">
-  <img src="https://img.shields.io/maven-central/v/org.apache.syncope/syncope.svg"/>
-</a>
-<a href="https://github.com/apache/syncope/actions/workflows/crosschecks.yml">
-  <img src="https://github.com/apache/syncope/actions/workflows/crosschecks.yml/badge.svg"/>
-</a>
-<a href="https://github.com/apache/syncope/actions/workflows/codeql-analysis.yml">
-  <img src="https://github.com/apache/syncope/actions/workflows/codeql-analysis.yml/badge.svg"/>
-</a>
+|         Class        | Statement Coverage | Branch Coverage | Mutation Coverage |
+|:------------------------:|:----------------------:|:-------------------:|:---------------------:|
+| DefaultPasswordGenerator |           96%          |         86%         |          36%          |
+| RealmUtils               |          100%          |         95%         |          78%          |
+| buildAuthorities         |          100%          |         100%        |                       |
+
+## Documentation
+
+[Testing report](https://github.com/callbrok/TestSuite_Syncope/blob/61f3be10052d3f14492202c2af7c4960924e22a1/report/testing_report.pdf) (:it:) made with all the results, improvements and considerations.
+
+
+
